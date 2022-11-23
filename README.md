@@ -36,13 +36,13 @@ When the repository is finally cloned, enter the directory and install the depen
 
 ```bash
 cd learning-path-challenges
-npm install
+npm install // or `yarn install`
 ```
 
 After installing the dependencies, you start the CLI by running the following command inside the directory:
 
 ```bash
-npm run exercise
+npm run exercise // or `yarn run exercise`
 ```
 
 If everything went ok, it should prompt you the following screen:

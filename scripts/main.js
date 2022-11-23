@@ -1,9 +1,9 @@
-import { execSync } from 'child_process'
-import fs from 'fs'
-import path from 'path'
-import chalk from 'chalk'
-import inquirer from 'inquirer'
-import logo from 'asciiart-logo'
+const { execSync } = require('child_process')
+const fs = require('fs')
+const path = require('path')
+const chalk = require('chalk')
+const inquirer = require('inquirer')
+const logo = require('asciiart-logo')
 
 const capitalizeFirstLetter = string => {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -17,7 +17,7 @@ const executeExercise = (pathType, level) => {
     const exists = fs.existsSync(exerciseFile, 'utf8')
     if (!exists) throw new Error()
     try {
-      execSync(`npx ts-mocha -p ${tsconfigPath} ${exerciseFile}`, {
+      execSync(`npx ts-mocha -n loader=ts-node/esm -p ${tsconfigPath} ${exerciseFile}`, {
         stdio: 'inherit'
       })
       console.log(chalk.green('Exercise completed!'))
