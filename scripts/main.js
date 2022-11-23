@@ -11,22 +11,38 @@ const capitalizeFirstLetter = string => {
 
 const executeExercise = (pathType, level) => {
   const tsconfigPath = path.resolve(path.dirname('.'), 'tsconfig.json')
-  const exerciseFile = path.resolve(path.dirname('.'), pathType.toLowerCase(), `level-${level}/exercise.spec.ts`)
 
-  try {
-    const exists = fs.existsSync(exerciseFile, 'utf8')
-    if (!exists) throw new Error()
-    try {
-      execSync(`npx ts-mocha -n loader=ts-node/esm -p ${tsconfigPath} ${exerciseFile}`, {
-        stdio: 'inherit'
-      })
-      console.log(chalk.green('Exercise completed!'))
-    } catch (e) {
-      console.log(chalk.red('Whoops! Exercise failed.'))
-    }
-  } catch (error) {
-    console.log(chalk.red(`Exercise ${pathType.toLowerCase()} for level ${level} not found.`))
-    process.exit(1)
+  switch (level) {
+    case 'all':
+      const exercisesFolder = path.resolve(path.dirname('.'), `${pathType.toLowerCase()}/**/*.ts`)
+      try {
+        execSync(`npx ts-mocha -n loader=ts-node/esm -p ${tsconfigPath} ${exercisesFolder}`, {
+          stdio: 'inherit'
+        })
+        console.log(chalk.green(`Path ${pathType} completed!`))
+      } catch (e) {
+        console.log(chalk.red('Whoops! One or more exercises failed.'))
+      }
+      break
+    default:
+      const exerciseFile = path.resolve(path.dirname('.'), pathType.toLowerCase(), `level-${level}/exercise.spec.ts`)
+
+      try {
+        const exists = fs.existsSync(exerciseFile, 'utf8')
+        if (!exists) throw new Error()
+        try {
+          execSync(`npx ts-mocha -n loader=ts-node/esm -p ${tsconfigPath} ${exerciseFile}`, {
+            stdio: 'inherit'
+          })
+          console.log(chalk.green('Exercise completed!'))
+        } catch (e) {
+          console.log(chalk.red('Whoops! Exercise failed.'))
+        }
+      } catch (error) {
+        console.log(chalk.red(`Exercise ${pathType.toLowerCase()} for level ${level} not found.`))
+        process.exit(1)
+      }
+      break
   }
 }
 
@@ -44,9 +60,9 @@ const main = async () => {
     name: 'level',
     message: 'Choose a level from the available ones:',
     type: 'list',
-    choices: pathLevels.map(l => capitalizeFirstLetter(l.replace('-', ' ')))
+    choices: ['All', ...pathLevels.map(l => capitalizeFirstLetter(l.replace('-', ' ')))]
   })
-  executeExercise(pathType.toLowerCase(), level.split(' ')[1])
+  executeExercise(pathType.toLowerCase(), level === 'All' ? 'all' : level.split(' ')[1])
 }
 
 main()
