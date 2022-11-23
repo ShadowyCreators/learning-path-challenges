@@ -1,3 +1,3 @@
-# 🤖 Backend Level 7 Challenge
+# 👾 Contracts Level 2 Challenge
 
 > ⚠️ TODO: this challenge is still a WIP

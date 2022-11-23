@@ -10,7 +10,7 @@ Welcome to the repository that contains the challenges for the **Shadowy Learnin
 
 Since we're still working on a website where to handle all the challenges, we decided to create this repository for the public to tackle the challenges we propose inside our learning path.
 
-There are 3 main folders inside the `root` directory, one for each path. Inside each folder, there are all the folders relative to each level (eg. `level-4` inside the `frontend` folder is where there is the challenge for the fourth level of the Frontend path).
+There are 3 main folders inside the `root` directory, one for each path. Inside each folder, there are all the folders relative to each level (eg. `level-2` inside the `frontend` folder is where there is the challenge for the fourth level of the Frontend path).
 
 Each level folder contains a `README.md` file, some (optional) code files that you'll need to fill and a `BADGES.md` file:
 - The `README.md` file contains all the instructions for the challenge, and **must be read before writing any code**;

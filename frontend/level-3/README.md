@@ -1,3 +1,3 @@
-# 🎨 Frontend Level 7 Challenge
+# 🎨 Frontend Level 3 Challenge
 
 > ⚠️ TODO: this challenge is still a WIP
