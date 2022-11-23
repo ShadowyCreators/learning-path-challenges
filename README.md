@@ -4,7 +4,7 @@
 
 > The Shadowy Learning Path it's still in **beta** and will change very often.
 
-Welcome to the repository that contains the challenges for the **Shadowy Learning Path**! Here you'll find, for each path (*frontend*, *backend* or *contracts*) and each level the challenge you **must** complete in order to obtain the badge!
+Welcome to the repository that contains the challenges for the **Shadowy Learning Path**! Here you'll find, for each path (_frontend_, _backend_ or _contracts_) and each level the challenge you **must** complete in order to obtain the badge!
 
 ## ❓ How does it work?
 
@@ -12,7 +12,8 @@ Since we're still working on a website where to handle all the challenges, we de
 
 There are 3 main folders inside the `root` directory, one for each path. Inside each folder, there are all the folders relative to each level (eg. `level-2` inside the `frontend` folder is where there is the challenge for the fourth level of the Frontend path).
 
-Each level folder contains a `README.md` file, some (optional) code files that you'll need to fill and a `BADGES.md` file:
+Each level folder contains a `README.md` file, a `exercise.spec.ts` code file that you'll need to fill and a `BADGES.md` file:
+
 - The `README.md` file contains all the instructions for the challenge, and **must be read before writing any code**;
 - The code files, if present, are what you'll need to fill and run in order to pass the challenge;
 - The `BADGES.md` file contains all the users that tackled correctly that challenge.
@@ -22,3 +23,36 @@ Each level folder contains a `README.md` file, some (optional) code files that y
 After you've finished writing your code in your forked repository, you'll create a PR (pull request) on this repository updating the `BADGES.md` file with your username and the link to your forked repo.
 
 In order to speed-up the challenge verification process, we created a Telegram group (`@TODO`) where you can ping one of the Shadowers to go and check your newly submitted PR: if you succeeded in beating the challenge, your pull request will be accepted and your name will appear in the `BADGES.md` file.
+
+## 🔌 CLI setup
+
+Before running any exercise, you must fork this repository into your GitHub account. After you've done so, clone the repository locally on your pc (make sure to replace `<YOUR_USERNAME>` with your GitHub username):
+
+```bash
+git clone https://github.com/<YOUR_USERNAME>/learning-path-challenges.git
+```
+
+When the repository is finally cloned, enter the directory and install the dependencies (you need to have **node** and **npm** installed):
+
+```bash
+cd learning-path-challenges
+npm install
+```
+
+After installing the dependencies, you start the CLI by running the following command inside the directory:
+
+```bash
+npm run exercise
+```
+
+If everything went ok, it should prompt you the following screen:
+
+![Shadowy Learning Path CLI starting screen](assets/screen-1.png)
+
+Now you can easily run any exercise from any path from here!
+
+## 🤖 Completing challenges and running exercises
+
+Under each path folder there are all the levels with their relative challenge (file `exercise.spec.ts`) you need to complete in order to obtain the badge.
+
+In order to complete a challenge you need to resolve the problem inside the test file and run it using the CLI.
