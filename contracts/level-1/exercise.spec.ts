@@ -3,6 +3,10 @@ import { ethers } from "hardhat";
 import { Owned__factory, Owned } from "../../typechain-types/index";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 
+/**
+ * NOTE: Do not touch. This file is used for testing purposes.
+ */
+
 describe("[Contracts] Level 1", () => {
   describe("Owned Contract", () => {
     let owned: Owned, owner: SignerWithAddress, user: SignerWithAddress;

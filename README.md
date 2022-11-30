@@ -63,4 +63,6 @@ This example will run the `level-1` test for the `frontend` path.
 
 Under each path folder there are all the levels with their relative challenge (file `exercise.spec.ts`) you need to complete in order to obtain the badge.
 
+Some exercises may require you to complete other types of files, such as `.sol` or `.html` for the `Contracts` and `Frontend` paths. Everything is written in the `README.md` file under each level folder, so make sure you read it before proceeding with the exercises!
+
 In order to complete a challenge you need to resolve the problem inside the test file and run it using the CLI.

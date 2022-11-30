@@ -3,6 +3,10 @@ import { ethers } from "hardhat";
 import { ShadowyNFT__factory, ShadowyNFT } from "../../typechain-types/index";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 
+/**
+ * NOTE: Do not touch. This file is used for testing purposes.
+ */
+
 describe("[Contracts] Level 2", () => {
   describe("ShadowyNFT Contract", () => {
     let shadowyNFT: ShadowyNFT, owner: SignerWithAddress, user: SignerWithAddress;
