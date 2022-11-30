@@ -6,12 +6,12 @@ contract Owned {
 
 	// Contract constructor
 	constructor() {
-        // TODO: set the owner as the sender
+        owner = msg.sender;
 	}
 
 	// Access control modifier
 	modifier onlyOwner {
-	    // TODO: add logic to the modifier
+	    require(msg.sender == owner);
 	    _;
 	}
 
@@ -20,6 +20,6 @@ contract Owned {
     }
 
     function publicFunctionForUsers() public view returns (address) {
-        // TODO: return the address of the msg sender
+        return msg.sender;
     }
 }
