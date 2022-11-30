@@ -9,7 +9,12 @@ You must implement the logic inside the `attack()` function and add other functi
 After you've finished your work, simply run on your terminal:
 
 ```bash
-npm run exercise
+npm run exercise // or yarn run exercise
 ```
 
 And then choose `Contract` and `Level 3` as the options: it will prompt to you the results of your work!
+Otherwise you can just run the level 3 exercise by running the following command:
+
+```bash
+npm run exercise contracts 3 // or yarn run exercise contracts 3
+```

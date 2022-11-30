@@ -7,10 +7,15 @@ The **Level 1 Challenge** for the _Frontend_ learning path consists in 4 main ex
 - In the third one, you'll define two basic functions (`isAdmin` e `isUser`) that must return true if the incoming `Person` is an `Admin` or a `User` respectively;
 - In the last one, you'll add annotations to a class that manipulates `Objects` in a cool way.
 
-After you've finished all the exercises, or if you want to do a rapid check on the tests, simply run on your terminal:
+After you've finished your work, simply run on your terminal:
 
 ```bash
-npm run exercise
+npm run exercise // or yarn run exercise
 ```
 
 And then choose `Frontend` and `Level 1` as the options: it will prompt to you the results of your work!
+Otherwise you can just run the level 1 exercise by running the following command:
+
+```bash
+npm run exercise frontend 1 // or yarn run exercise frontend 1
+```

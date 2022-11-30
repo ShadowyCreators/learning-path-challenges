@@ -11,7 +11,12 @@ You'll need to:
 After you've finished your work, simply run on your terminal:
 
 ```bash
-npm run exercise
+npm run exercise // or yarn run exercise
 ```
 
 And then choose `Backend` and `Level 2` as the options: it will prompt to you the results of your work!
+Otherwise you can just run the level 2 exercise by running the following command:
+
+```bash
+npm run exercise backend 2 // or yarn run exercise backend 2
+```

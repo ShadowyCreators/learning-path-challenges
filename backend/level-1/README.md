@@ -19,7 +19,12 @@ Because constitution is 3, the constitution modifier is -4 and the hitpoints are
 After you've finished your work, simply run on your terminal:
 
 ```bash
-npm run exercise
+npm run exercise // or yarn run exercise
 ```
 
 And then choose `Backend` and `Level 1` as the options: it will prompt to you the results of your work!
+Otherwise you can just run the level 1 exercise by running the following command:
+
+```bash
+npm run exercise backend 1 // or yarn run exercise backend 1
+```
