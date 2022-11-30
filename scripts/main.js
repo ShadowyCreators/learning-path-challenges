@@ -11,6 +11,7 @@ const capitalizeFirstLetter = string => {
 
 const executeExercise = (pathType, level) => {
   const tsconfigPath = path.resolve(path.dirname('.'), 'tsconfig.json')
+  const vueTsconfigPath = path.resolve(path.dirname('.'), 'vue-tsconfig.json')
 
   if (pathType.toLowerCase() === 'contracts') {
     execSync('npx hardhat typechain', { stdio: 'inherit' })
@@ -20,12 +21,22 @@ const executeExercise = (pathType, level) => {
     case 'all':
       const exercisesFolder = path.resolve(path.dirname('.'), `${pathType.toLowerCase()}/**/*.ts`)
       try {
+        if (pathType.toLowerCase() === 'frontend') {
+          execSync('npx vue-typegen gen -s frontend -o frontend/dist', {
+            stdio: 'inherit'
+          })
+        }
         if (pathType.toLowerCase() === 'contracts') {
           execSync('npx hardhat test', { stdio: 'inherit' })
         } else {
-          execSync(`npx ts-mocha -n loader=ts-node/esm -p ${tsconfigPath} ${exercisesFolder}`, {
-            stdio: 'inherit'
-          })
+          execSync(
+            `npx ts-mocha -n loader=ts-node/esm -p ${
+              pathType === 'frontend' ? vueTsconfigPath : tsconfigPath
+            } ${exercisesFolder}`,
+            {
+              stdio: 'inherit'
+            }
+          )
         }
         console.log(chalk.green(`Path ${pathType} completed!`))
       } catch (e) {
@@ -42,9 +53,14 @@ const executeExercise = (pathType, level) => {
           if (pathType.toLowerCase() === 'contracts') {
             execSync(`npx hardhat test ${exerciseFile}`, { stdio: 'inherit' })
           } else {
-            execSync(`npx ts-mocha -n loader=ts-node/esm -p ${tsconfigPath} ${exerciseFile}`, {
-              stdio: 'inherit'
-            })
+            execSync(
+              `npx ts-mocha -n loader=ts-node/esm -p ${
+                pathType === 'frontend' ? vueTsconfigPath : tsconfigPath
+              } ${exerciseFile}`,
+              {
+                stdio: 'inherit'
+              }
+            )
           }
           console.log(chalk.green('Exercise completed!'))
         } catch (e) {
