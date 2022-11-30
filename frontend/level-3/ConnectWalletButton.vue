@@ -5,14 +5,7 @@
 </template>
   
 <script lang="ts">
-import { defineComponent } from 'vue'
-export default defineComponent({
-    data: () => ({
-        address: '',
-    }),
+import ConnectWalletButton from './ConnectWalletButton';
 
-    methods: {
-        connectWallet() {},
-    },
-})
+export default ConnectWalletButton;
 </script>
