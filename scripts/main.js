@@ -12,13 +12,21 @@ const capitalizeFirstLetter = string => {
 const executeExercise = (pathType, level) => {
   const tsconfigPath = path.resolve(path.dirname('.'), 'tsconfig.json')
 
+  if (pathType.toLowerCase() === 'contracts') {
+    execSync('npx hardhat typechain', { stdio: 'inherit' })
+  }
+
   switch (level) {
     case 'all':
       const exercisesFolder = path.resolve(path.dirname('.'), `${pathType.toLowerCase()}/**/*.ts`)
       try {
-        execSync(`npx ts-mocha -n loader=ts-node/esm -p ${tsconfigPath} ${exercisesFolder}`, {
-          stdio: 'inherit'
-        })
+        if (pathType.toLowerCase() === 'contracts') {
+          execSync('npx hardhat test', { stdio: 'inherit' })
+        } else {
+          execSync(`npx ts-mocha -n loader=ts-node/esm -p ${tsconfigPath} ${exercisesFolder}`, {
+            stdio: 'inherit'
+          })
+        }
         console.log(chalk.green(`Path ${pathType} completed!`))
       } catch (e) {
         console.log(chalk.red('Whoops! One or more exercises failed.'))
@@ -31,9 +39,13 @@ const executeExercise = (pathType, level) => {
         const exists = fs.existsSync(exerciseFile, 'utf8')
         if (!exists) throw new Error()
         try {
-          execSync(`npx ts-mocha -n loader=ts-node/esm -p ${tsconfigPath} ${exerciseFile}`, {
-            stdio: 'inherit'
-          })
+          if (pathType.toLowerCase() === 'contracts') {
+            execSync(`npx hardhat test ${exerciseFile}`, { stdio: 'inherit' })
+          } else {
+            execSync(`npx ts-mocha -n loader=ts-node/esm -p ${tsconfigPath} ${exerciseFile}`, {
+              stdio: 'inherit'
+            })
+          }
           console.log(chalk.green('Exercise completed!'))
         } catch (e) {
           console.log(chalk.red('Whoops! Exercise failed.'))
@@ -47,22 +59,32 @@ const executeExercise = (pathType, level) => {
 }
 
 const main = async () => {
-  console.clear()
-  console.log(logo({ name: 'Shadowy' }).render())
-  const { pathType } = await inquirer.prompt({
-    name: 'pathType',
-    message: 'Choose the path from the choices below:',
-    type: 'list',
-    choices: ['Backend', 'Contracts', 'Frontend']
-  })
-  const pathLevels = await fs.promises.readdir(path.resolve('.', pathType.toLowerCase()))
-  const { level } = await inquirer.prompt({
-    name: 'level',
-    message: 'Choose a level from the available ones:',
-    type: 'list',
-    choices: ['All', ...pathLevels.map(l => capitalizeFirstLetter(l.replace('-', ' ')))]
-  })
-  executeExercise(pathType.toLowerCase(), level === 'All' ? 'all' : level.split(' ')[1])
+  const [, , pathName, levelNumber] = process.argv
+  if (
+    pathName &&
+    levelNumber &&
+    !isNaN(levelNumber) &&
+    ['contracts', 'backend', 'frontend'].includes(pathName.toLowerCase())
+  ) {
+    executeExercise(pathName, levelNumber.toLowerCase() === 'all' ? 'all' : levelNumber)
+  } else {
+    console.clear()
+    console.log(logo({ name: 'Shadowy' }).render())
+    const { pathType } = await inquirer.prompt({
+      name: 'pathType',
+      message: 'Choose the path from the choices below:',
+      type: 'list',
+      choices: ['Backend', 'Contracts', 'Frontend']
+    })
+    const pathLevels = await fs.promises.readdir(path.resolve('.', pathType.toLowerCase()))
+    const { level } = await inquirer.prompt({
+      name: 'level',
+      message: 'Choose a level from the available ones:',
+      type: 'list',
+      choices: ['All', ...pathLevels.map(l => capitalizeFirstLetter(l.replace('-', ' ')))]
+    })
+    executeExercise(pathType.toLowerCase(), level === 'All' ? 'all' : level.split(' ')[1])
+  }
 }
 
 main()

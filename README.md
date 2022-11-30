@@ -51,6 +51,14 @@ If everything went ok, it should prompt you the following screen:
 
 Now you can easily run any exercise from any path from here!
 
+If you don't want to use everything the CLI UI, you can select with path and relative level to test by passing them as arguments in the command line:
+
+```bash
+npm run exercise frontend 1 // or 'yarn run exercise frontend 1'
+```
+
+This example will run the `level-1` test for the `frontend` path.
+
 ## 🤖 Completing challenges and running exercises
 
 Under each path folder there are all the levels with their relative challenge (file `exercise.spec.ts`) you need to complete in order to obtain the badge.
