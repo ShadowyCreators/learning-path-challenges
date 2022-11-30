@@ -21,11 +21,6 @@ const executeExercise = (pathType, level) => {
     case 'all':
       const exercisesFolder = path.resolve(path.dirname('.'), `${pathType.toLowerCase()}/**/*.ts`)
       try {
-        if (pathType.toLowerCase() === 'frontend') {
-          execSync('npx vue-typegen gen -s frontend -o frontend/dist', {
-            stdio: 'inherit'
-          })
-        }
         if (pathType.toLowerCase() === 'contracts') {
           execSync('npx hardhat test', { stdio: 'inherit' })
         } else {
