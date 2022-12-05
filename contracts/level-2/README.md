@@ -8,7 +8,7 @@ The contract must work in this way:
 - Users can burn **their own NFTs** (note: must revert if it's not the case);
 - The owner of the contract can withdraw all the ETH inside the `ShadowyNFT` contract.
 
-After you've finished your work, simply run on your terminal:
+After you've finished your work, simply run on your terminal (remember to run `npm install` or `yarn install` if you didn't previously):
 
 ```bash
 npm run exercise // or yarn run exercise

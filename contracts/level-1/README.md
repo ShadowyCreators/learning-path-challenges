@@ -6,7 +6,7 @@ The **Level 1 Challenge** for the _Contracts_ path consists in filling few lines
 - Update the `onlyOwner` modifier to allow only the `owner` address to call functions where the modifier is applied;
 - Update the `publicFunctionForUsers` functions to return the address of the wallet that's calling the function.
 
-After you've finished your work, simply run on your terminal:
+After you've finished your work, simply run on your terminal (remember to run `npm install` or `yarn install` if you didn't previously):
 
 ```bash
 npm run exercise // or yarn run exercise

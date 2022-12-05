@@ -15,10 +15,10 @@ describe("[Contracts] Level 3", () => {
       [attacker, user] = await ethers.getSigners();
 
       vulnerable = await new Vulnerable__factory(user).deploy();
-      const depositTx = await vulnerable.deposit({ value: 2 });
+      const depositTx = await vulnerable.deposit({ value: ethers.utils.parseEther("2") });
       await depositTx.wait();
-      expect(await vulnerable.balances(user.address)).eq(2);
-      expect(await ethers.provider.getBalance(vulnerable.address)).eq(2);
+      expect(await vulnerable.balances(user.address)).eq( ethers.utils.parseEther("2"));
+      expect(await ethers.provider.getBalance(vulnerable.address)).eq( ethers.utils.parseEther("2"));
       attack = await new Attack__factory(attacker).deploy(vulnerable.address);
       expect((await attack.functions.vulnerableContract())[0]).eq(vulnerable.address);
     })

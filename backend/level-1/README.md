@@ -16,7 +16,7 @@ For example, the six throws of four dice may look like:
 6, 6, 6, 6: You discard the 6 and sum 6 + 6 + 6 = 18, which you assign to charisma.
 Because constitution is 3, the constitution modifier is -4 and the hitpoints are 6.
 
-After you've finished your work, simply run on your terminal:
+After you've finished your work, simply run on your terminal (remember to run `npm install` or `yarn install` if you didn't previously):
 
 ```bash
 npm run exercise // or yarn run exercise

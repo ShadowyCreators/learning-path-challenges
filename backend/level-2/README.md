@@ -8,7 +8,7 @@ You'll need to:
 - Define an auth middleware that checks for the existance of the `x-shadowy-user` header: if it's missing, the response must return a 403 status code;
 - Define a `GET /protected` route that uses the middleware above and returns the `x-shadowy-user` header value.
 
-After you've finished your work, simply run on your terminal:
+After you've finished your work, simply run on your terminal (remember to run `npm install` or `yarn install` if you didn't previously):
 
 ```bash
 npm run exercise // or yarn run exercise
