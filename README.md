@@ -3,6 +3,7 @@
 ![Shadowy Learning Path logo](assets/logo.png)
 
 > The Shadowy Learning Path it's still in **beta** and will change very often.
+> Brought to you by [Shadowy Creators](https://shadowycoders.dev/) and the amazing open source community 
 
 Welcome to the repository that contains the challenges for the **Shadowy Learning Path**! Here you'll find, for each path (_frontend_, _backend_ or _contracts_) and each level the challenge you **must** complete in order to obtain the badge!
 
