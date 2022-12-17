@@ -113,16 +113,16 @@ class ObjectManipulator {
 
 describe('[Frontend] Level 1', () => {
   it('[Exercise 1] Should return a list of strings with `name - age` for each user.', () => {
-      expect(exerciseOne(users)).eq(['Max Mustermann - 25', 'Kate Müller - 23'])
+      expect(exerciseOne(users)).eql(['Max Mustermann - 25', 'Kate Müller - 23'])
   })
   it('[Exercise 2] Should return a list of strings with `name - age` for each person.', () => {
-    expect(exerciseTwo(persons)).eq(['Max Mustermann - 25', 'Jane Doe - 32', 'Kate Müller - 23', 'Bruce Willis - 64'])
+    expect(exerciseTwo(persons)).eql(['Max Mustermann - 25', 'Jane Doe - 32', 'Kate Müller - 23', 'Bruce Willis - 64'])
   })
   it('[Exercise 3a] Should return only the list of users', () => {
-    expect(exerciseTwo(persons.filter(isUser))).eq(['Max Mustermann - 25', 'Kate Müller - 23'])
+    expect(exerciseTwo(persons.filter(isUser))).eql(['Max Mustermann - 25', 'Kate Müller - 23'])
   })
   it('[Exercise 3b] Should return only the list of admins', () => {
-    expect(exerciseTwo(persons.filter(isAdmin))).eq(['Jane Doe - 32', 'Bruce Willis - 64'])
+    expect(exerciseTwo(persons.filter(isAdmin))).eql(['Jane Doe - 32', 'Bruce Willis - 64'])
   })
   it('[Exercise 4] The ObjectManipulator class should work.', () => {
     let objManipulator = new ObjectManipulator({ exercise: 4 })
