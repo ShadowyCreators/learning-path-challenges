@@ -25,21 +25,41 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-6 my-5">
-            <connect-button inline-template>
-              <button @click="connectWallet">{{ address }}</button>
-            </connect-button>
+            <password-helper inline-template>
+              <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" placeholder="Password" v-model="password" />
+                <small id="passwordHelp" class="form-text text-muted"
+                  >Password should contain
+                  <span :class="has_minimum_length ? 'has_required' : ''">at least 8 characters</span>,
+                  <span :class="has_lowercase ? 'has_required' : ''">one lowercase letter</span>,
+                  <span :class="has_uppercase ? 'has_required' : ''">one uppercase letter</span>,
+                  <span :class="has_number ? 'has_required' : ''">one number</span>, and
+                  <span :class="has_special ? 'has_required' : ''">one special character.</span></small
+                >
+              </div>
+            </password-helper>
           </div>
         </div>
       </div>
     </div>
   </body>
   <script>
-    Vue.component('connect-button', {
-      data: () => ({
-        address: ''
-      }),
-      methods: {
-        connectWallet() {}
+    Vue.component('password-helper', {
+      data() {
+        return {
+          password: '',
+          has_minimum_length: false,
+          has_number: false,
+          has_lowercase: false,
+          has_uppercase: false,
+          has_special: false
+        }
+      },
+      watch: {
+        password() {
+          // TODO: define this function
+        }
       }
     })
 
