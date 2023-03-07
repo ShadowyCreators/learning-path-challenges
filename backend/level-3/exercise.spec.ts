@@ -75,7 +75,7 @@ describe('[Backend] Level 3', () => {
         const contract2 = new Contract({ name: 'test2', address: 'test456', abi: [{ functionName: "testFunction2" }]});
         await contract2.save();
         const res = await request(app).get('/').expect(200)
-        expect(res.body).eql([contract, contract2])
+        expect(res.body).eql([{ ...contract, _id: contract._id.toHexString()}, { ...contract2, _id: contract2._id.toHexString()}])
     })
     it('[Exercise 3b] GET /:address should return a given contract or 404', async () => {
         const contract = new Contract({ name: 'test', address: 'test123', abi: [{ functionName: "testFunction" }]});

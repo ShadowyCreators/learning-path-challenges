@@ -25,7 +25,7 @@ describe("[Contracts] Level 3", () => {
 
     it('Attacking user must steal ETH from the vulnerable contract', async () => {
         const attackerBalance = await ethers.provider.getBalance(attacker.address);
-        const attackTx = await attack.attack();
+        const attackTx = await attack.attack({ value: ethers.utils.parseEther("2") });
         await attackTx.wait();
         const afterAttackBalance = await ethers.provider.getBalance(attacker.address);
         expect(afterAttackBalance).greaterThan(attackerBalance)
