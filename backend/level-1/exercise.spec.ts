@@ -1,5 +1,4 @@
 import { expect } from 'chai'
-import { abort } from 'process';
 
 /**
  * This challenge consists in creating a character for a game of Dungeons & Dragons: each player starts by generating a character they can play with. 
@@ -31,30 +30,10 @@ type Character = {
     wisdom: number;
     charisma: number;
 }
-function randomValueGenerator() : number {
-    let value : number
-    let dices: number[] = []
-    for(let x = 0; x < 4; ++x){
-        dices.push(Math.floor(Math.random()*6) + 1)
-    }
-    dices.sort((a, b)=>  (b - a))
-    dices.pop()
-
-    return dices[0] + dices[1] + dices[2]; 
-}
 
 const generateCharacter = (name: unknown): Character => {
-    if(typeof name != 'string'){
-        abort()
-    }
-    let strength = randomValueGenerator()
-    let dexterity = randomValueGenerator()
-    let constitution = randomValueGenerator()
-    let intelligence = randomValueGenerator()
-    let wisdom = randomValueGenerator()
-    let charisma = randomValueGenerator()    
-    let health = 10 - Math.floor((constitution - 10)/2) 
-    return { name, health, strength, dexterity, constitution, intelligence, wisdom, charisma }; 
+    // TODO: define function
+    return { name, health: 10, strength: 0, dexterity: 0, constitution: 0, intelligence: 0, wisdom: 0, charisma: 0 }; 
 }
 
 describe('[Backend] Level 1', () => {
