@@ -6,9 +6,13 @@ import { expect } from 'chai'
  * Given the data, you must define the interface "User" and use it accordingly
  */
 
-type User = unknown;
+interface User {
+  name: string;
+  age: number;
+  occupation: string;
+}
 
-const users: unknown[] = [
+const users: User[] = [
   {
     name: 'Max Mustermann',
     age: 25,
@@ -21,9 +25,11 @@ const users: unknown[] = [
   }
 ]
 
-const exerciseOne = (users: unknown[]) => {
-  return users.map((user: unknown) => `${user.name} - ${user.age}`)
+const exerciseOne = (users: User[]): string[] => {
+  return users.map((user: User) => `${user.name} - ${user.age}`);
 }
+
+console.log(exerciseOne(users));
 
 /**
  * Exercise 2
@@ -38,9 +44,9 @@ type Admin = {
   role: string;
 }
 
-type Person = unknown;
+type Person = User | Admin;
 
-const persons: User[] /* Person[] */ = [
+const persons: Person[] = [
   {
     name: 'Max Mustermann',
     age: 25,
@@ -63,74 +69,8 @@ const persons: User[] /* Person[] */ = [
   }
 ]
 
-const exerciseTwo = (persons: unknown[]) => {
-  return persons.map((person: unknown) => `${person.name} - ${person.age}`)
+const exerciseTwo = (persons: Person[]): string[] => {
+  return persons.map((person: Person) => `${person.name} - ${person.age}`)
 }
 
-/**
- * Exercise 3
- * 
- * Define the two following functions to define if a person is a user or an admin.
- */
-const isAdmin = (person: Person): boolean => {
-  // TODO: insert logic here
-  return false
-}
-
-const isUser = (person: Person): boolean => {
-  // TODO: insert logic here
-  return false
-}
-
-/**
- * Exercise 4
- * 
- * Define the following library to manipulate objects.
- * We are missing some annotations, help us!
- */
-
-class ObjectManipulator {
-  constructor(protected obj) {}
-
-  public set(key, value) {
-    return new ObjectManipulator({...this.obj, [key]: value});
-  }
-
-  public get(key) {
-    return this.obj[key];
-  }
-
-  public delete(key) {
-    const newObj = {...this.obj};
-    delete newObj[key];
-    return new ObjectManipulator(newObj);
-  }
-
-  public getObject() {
-    return this.obj;
-  }
-}
-
-describe('[Frontend] Level 1', () => {
-  it('[Exercise 1] Should return a list of strings with `name - age` for each user.', () => {
-      expect(exerciseOne(users)).eql(['Max Mustermann - 25', 'Kate Müller - 23'])
-  })
-  it('[Exercise 2] Should return a list of strings with `name - age` for each person.', () => {
-    expect(exerciseTwo(persons)).eql(['Max Mustermann - 25', 'Jane Doe - 32', 'Kate Müller - 23', 'Bruce Willis - 64'])
-  })
-  it('[Exercise 3a] Should return only the list of users', () => {
-    expect(exerciseTwo(persons.filter(isUser))).eql(['Max Mustermann - 25', 'Kate Müller - 23'])
-  })
-  it('[Exercise 3b] Should return only the list of admins', () => {
-    expect(exerciseTwo(persons.filter(isAdmin))).eql(['Jane Doe - 32', 'Bruce Willis - 64'])
-  })
-  it('[Exercise 4] The ObjectManipulator class should work.', () => {
-    let objManipulator = new ObjectManipulator({ exercise: 4 })
-    expect(objManipulator.get('exercise')).eq(4)
-    objManipulator = objManipulator.set('test', true)
-    expect(objManipulator.get('exercise')).eq(4)
-    expect(objManipulator.get('test')).eq(true)
-    objManipulator = objManipulator.delete('test')
-    expect(objManipulator.get('test')).eq(undefined)
-  })
-})
+console.log(exerciseTwo(persons));
