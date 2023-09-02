@@ -42,3 +42,18 @@ var exerciseTwo = function (persons) {
     return persons.map(function (person) { return "".concat(person.name, " - ").concat(person.age); });
 };
 console.log(exerciseTwo(persons));
+/**
+ * Exercise 3
+ *
+ * Define the two following functions to define if a person is a user or an admin.
+ */
+var isAdmin = function (person) {
+    // TODO: insert logic here
+    return 'role' in person;
+};
+var isUser = function (person) {
+    // TODO: insert logic here
+    return 'occupation' in person;
+};
+console.log(isAdmin(persons[1]));
+console.log(isUser(persons[1]));

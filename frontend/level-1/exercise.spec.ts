@@ -29,7 +29,7 @@ const exerciseOne = (users: User[]): string[] => {
   return users.map((user: User) => `${user.name} - ${user.age}`);
 }
 
-console.log(exerciseOne(users));
+// console.log(exerciseOne(users));
 
 /**
  * Exercise 2
@@ -73,4 +73,22 @@ const exerciseTwo = (persons: Person[]): string[] => {
   return persons.map((person: Person) => `${person.name} - ${person.age}`)
 }
 
-console.log(exerciseTwo(persons));
+// console.log(exerciseTwo(persons));
+
+/**
+ * Exercise 3
+ * 
+ * Define the two following functions to define if a person is a user or an admin.
+ */
+const isAdmin = (person: Person): boolean => {
+  // TODO: insert logic here
+  return 'role' in person;
+}
+
+const isUser = (person: Person): boolean => {
+  // TODO: insert logic here
+  return 'occupation' in person;
+}
+
+// console.log(isAdmin(persons[1]));
+// console.log(isUser(persons[1]));
