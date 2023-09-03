@@ -30,7 +30,7 @@ const testRegExp = (regex: RegExp, input: string): boolean => {
   return regex.test(input)
 }
 
-console.log(testRegExp(exerciseTwoRegexp, 'mattia.papa.digital@gmail.com'));
+// console.log(testRegExp(exerciseTwoRegexp, 'mattia.papa.digital@gmail.com'));
 
 /**
  * Exercise 3
@@ -41,15 +41,37 @@ console.log(testRegExp(exerciseTwoRegexp, 'mattia.papa.digital@gmail.com'));
  * The function must return a list of strings with the following format: `userId - id - title (only first word)`.
  */
 
-/*
+interface Result {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+};
+
 const exerciseThree = async (): Promise<string[]> => {
   // implement here
-  const fetchResult = fetch('')
-  return []
-}
-*/
+  const fetchResult = await fetch('https://jsonplaceholder.typicode.com/posts');
 
-/*
+  // Check the fetchResult is ok
+  if (!fetchResult.ok) {
+    throw new Error('Response not ok');
+  }
+
+  // Convert to JSON format
+  const results: Result[] = await fetchResult.json() as Result[];
+
+  // map the results
+  return results.map(result => {
+    const userId: number = result.userId;
+    const id: number = result.id
+    const title: string = result.title;
+
+    return `${userId} - ${id} - ${title.split(' ')[0]}`
+  })
+}
+
+
+// TEST
 describe('[Frontend] Level 2', () => {
   it('[Exercise 1] Should return true if the string has the first character uppercase, false otherwise.', () => {
     expect(testRegExp(exerciseOneRegexp, 'Exercise')).eql(true)
@@ -65,4 +87,3 @@ describe('[Frontend] Level 2', () => {
     expect((await exerciseThree()).slice(0, 3)).eql([`1 - 1 - sunt`, `1 - 2 - qui`, `1 - 3 - ea`])
   })
 })
-*/
