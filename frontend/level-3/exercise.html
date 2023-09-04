@@ -57,8 +57,34 @@
         }
       },
       watch: {
-        password() {
-          // TODO: define this function
+        password: function(newPassword) {
+
+          this.has_minimum_length = false;
+          this.has_number = false;
+          this.has_lowercase = false;
+          this.has_uppercase = false;
+          this.has_special = false;
+
+          const containsNumber = /\d/.test(newPassword);
+          const containsLowercase = /[a-z]/.test(newPassword);
+          const containsUppercase = /[A-Z]/.test(newPassword);
+          const containsSpecial = /[^A-Za-z0-9]/.test(newPassword);
+
+          if (newPassword.length >= 8) {
+            this.has_minimum_length = true
+          };
+          if (containsNumber) {
+            this.has_number = true
+          };
+          if (containsLowercase) {
+            this.has_lowercase = true
+          };
+          if (containsUppercase) {
+            this.has_uppercase = true
+          };
+          if (containsSpecial) {
+            this.has_special = true
+          };
         }
       }
     })
